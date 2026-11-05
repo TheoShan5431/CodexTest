@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f0e8">
+    <meta name="description" content="一个安静的番茄钟：专注一会儿，休息一下，让小事慢慢完成。">
+    <title>一刻 · 番茄钟</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand"><span class="brand-mark" aria-hidden="true">◷</span><span>一刻<span class="brand-dot">.</span></span></div>
+        <span class="header-note">A LITTLE TIME, WELL SPENT</span>
+        <span class="local-badge"><span aria-hidden="true"></span> 你的专注空间</span>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow"><span aria-hidden="true">✳</span> 把时间，过成自己的节奏</p>
+          <h1 id="page-title">把注意力，<br class="mobile-break">留给<span>这一刻。</span></h1>
+          <p>专心做一件事。然后，安心休息一下。</p>
+        </section>
+
+        <div class="workspace">
+          <section class="timer-card" aria-labelledby="timer-heading">
+            <div class="card-topline"><h2 id="timer-heading">留一段时间给自己</h2><span class="status-badge" id="timer-status">准备开始</span></div>
+            <div class="mode-tabs" role="group" aria-label="选择计时模式，切换模式会重置计时">
+              <button type="button" data-mode="focus" aria-pressed="true">专注</button>
+              <button type="button" data-mode="short" aria-pressed="false">短休息</button>
+              <button type="button" data-mode="long" aria-pressed="false">长休息</button>
+            </div>
+
+            <div class="clock-area">
+              <svg class="clock-ring" viewBox="0 0 300 300" aria-hidden="true"><circle class="ring-track" cx="150" cy="150" r="137"/><circle class="ring-progress" id="ring-progress" cx="150" cy="150" r="137" pathLength="100"/></svg>
+              <div class="clock-content">
+                <p class="mode-caption" id="mode-caption">现在，只做一件事</p>
+                <p class="time-display" id="time-display" role="timer" aria-live="off" aria-label="剩余时间 25 分 0 秒">25:00</p>
+                <p class="clock-detail" id="clock-detail">25 分钟，往前走一小步</p>
+              </div>
+            </div>
+
+            <div class="timer-actions">
+              <button class="primary-button" id="start-button" type="button"><span aria-hidden="true">▶</span><span id="start-label">开始专注</span></button>
+              <button class="reset-button" id="reset-button" type="button" aria-label="重置当前模式的计时">↺ <span>重置</span></button>
+            </div>
+            <div class="next-session" id="next-session" hidden><p id="next-message"></p><button id="next-button" type="button">去休息一下 →</button></div>
+            <p class="timer-footnote">切换模式或重置会重新计时；每一轮都由你手动开始。</p>
+          </section>
+
+          <aside class="sidebar" aria-label="今日统计和计时设置">
+            <section class="stats-card" aria-labelledby="stats-heading">
+              <div class="section-heading"><h2 id="stats-heading">今天的积累</h2><span id="today-date">今天</span></div>
+              <dl class="stats-grid">
+                <div><dt>完成专注</dt><dd><span id="today-count">0</span><small>次</small></dd></div>
+                <div><dt>专注时长</dt><dd><span id="today-minutes">0</span><small>分钟</small></dd></div>
+              </dl>
+              <p class="stats-note"><span aria-hidden="true">↗</span> 每一段完整的专注，都值得被记住。</p>
+            </section>
+
+            <section class="settings-card" aria-labelledby="settings-heading">
+              <div class="section-heading"><h2 id="settings-heading">找到你的节奏</h2><span aria-hidden="true">⚙</span></div>
+              <form id="settings-form">
+                <div class="duration-fields">
+                  <label for="focus-minutes">专注<span class="number-field"><input id="focus-minutes" name="focus" type="number" min="1" max="120" step="1" value="25" required><span aria-hidden="true">分</span></span></label>
+                  <label for="short-minutes">短休息<span class="number-field"><input id="short-minutes" name="short" type="number" min="1" max="120" step="1" value="5" required><span aria-hidden="true">分</span></span></label>
+                  <label for="long-minutes">长休息<span class="number-field"><input id="long-minutes" name="long" type="number" min="1" max="120" step="1" value="15" required><span aria-hidden="true">分</span></span></label>
+                </div>
+                <p class="settings-hint" id="settings-hint">每项 1–120 分钟。保存后，切换模式、重置或开启下一轮时生效。</p>
+                <button class="save-button" type="submit">保存设置 <span aria-hidden="true">↗</span></button>
+                <p class="settings-feedback" id="settings-feedback" role="status" hidden></p>
+              </form>
+            </section>
+
+            <section class="tip-card" aria-labelledby="tip-heading"><span class="tip-spark" aria-hidden="true">✳</span><div><h2 id="tip-heading">给自己一点空白</h2><p>放下手机，喝口水，看看窗外。<br>休息，也是前进的一部分。</p></div></section>
+          </aside>
+        </div>
+        <p class="storage-warning" id="storage-warning" role="status" hidden></p>
+        <p class="sr-only" id="live-message" role="status" aria-live="polite" aria-atomic="true"></p>
+        <noscript><p class="storage-warning">请启用 JavaScript，以使用计时和本地统计功能。</p></noscript>
+      </main>
+
+      <footer class="site-footer"><span>不用赶路，专心走好这一刻。</span><span id="storage-label">设置与统计仅保存在此浏览器</span></footer>
+    </div>
+  </body>
+</html>
