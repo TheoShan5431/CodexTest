@@ -1,11 +1,12 @@
 # CodexTest · 前端练习
 
-这个仓库包含两个独立运行的中文小项目，均使用原生 HTML、CSS 和 JavaScript，无需安装依赖。
+这个仓库包含三个独立运行的中文小项目，均使用原生 HTML、CSS 和 JavaScript，无需安装依赖。
 
 | 项目 | 打开文件 | 项目说明 |
 | --- | --- | --- |
 | 小步 · 今日清单 | 根目录 `index.html` | 本页下方 |
 | 一刻 · 番茄钟 | `pomodoro/index.html` | [查看番茄钟说明](pomodoro/README.md) |
+| 落子 · 五子棋 | `gomoku/index.html` | [查看五子棋说明](gomoku/README.md) |
 
 下载并解压整个仓库后，双击对应的 HTML 文件即可运行。GitHub 的文件页面用于查看源码，体验项目请先下载。
 

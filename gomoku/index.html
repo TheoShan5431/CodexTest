@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>落子 · 五子棋</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><span class="eyebrow">慢一点，想好每一步</span><h1>落子<span> · 五子棋</span></h1><p>两个人，一盘棋。黑棋先行，连成五子即获胜。</p></header>
+    <section class="game" aria-label="五子棋对局">
+      <div class="toolbar"><p id="status" role="status" aria-live="polite"></p><span id="moves"></span></div>
+      <div id="board" role="group" aria-label="15 行 15 列棋盘"></div>
+      <div class="actions"><button id="undo" type="button">悔棋</button><button id="restart" type="button">重新开始</button></div>
+    </section>
+    <details><summary>玩法与键盘操作</summary><p>本机双人轮流落子。横、竖或斜向连续五子及以上获胜，无禁手；棋盘下满且无人获胜则为和棋。已占用的位置不能落子。悔棋撤回一步，结束后也可悔棋继续。</p><p>点击交叉点落子；键盘可用方向键移动，Enter 或空格落子。刷新页面会清空棋局。</p></details>
+    <footer>专注当下，落子有声。</footer>
+    <noscript>请启用 JavaScript 后开始对局。</noscript>
+  </main>
+</body>
+</html>
