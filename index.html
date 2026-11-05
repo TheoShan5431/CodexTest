@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#edf2eb">
+    <meta name="description" content="一个无需安装、在浏览器本地保存的轻量待办清单 Demo。">
+    <title>小步 · 今日清单</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="./index.html" aria-label="小步，返回首页">
+          <span class="brand-mark" aria-hidden="true">✓</span>
+          <span>小步<span class="brand-dot">.</span></span>
+        </a>
+        <span class="project-tag">HELLO, GITHUB <span aria-hidden="true">↗</span></span>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow"><span class="small-dot" aria-hidden="true"></span> 每一天，从一小步开始</p>
+          <h1 id="page-title">把想法，<br>变成<span>已完成。</span></h1>
+          <p class="intro-copy">给今天一点秩序，给自己一点空间。<br>写下来，然后一件一件慢慢完成。</p>
+          <div class="intro-note"><span aria-hidden="true">↳</span> 一个小清单，也是一段新旅程。</div>
+          <div class="orbit" aria-hidden="true">
+            <div class="orbit-circle orbit-circle-one"></div>
+            <div class="orbit-circle orbit-circle-two"></div>
+            <span class="orbit-label">ONE STEP<br>AT A TIME</span>
+            <span class="orbit-spark">✳</span>
+          </div>
+        </section>
+
+        <section class="board" aria-labelledby="list-title">
+          <div class="board-header">
+            <div>
+              <p class="board-kicker" id="today-label">今天，也很值得期待</p>
+              <h2 id="list-title">今日清单</h2>
+            </div>
+            <span class="board-icon" aria-hidden="true">↗</span>
+          </div>
+
+          <div class="progress-card">
+            <div class="progress-caption">
+              <span id="progress-message">准备好迈出第一步了吗？</span>
+              <span class="progress-number" id="progress-number">0%</span>
+            </div>
+            <progress id="task-progress" max="100" value="0" aria-label="任务完成进度">0%</progress>
+            <p id="progress-detail">0 项任务，0 项已完成</p>
+          </div>
+
+          <form class="task-form" id="task-form">
+            <label class="sr-only" for="task-input">添加一件待办事项</label>
+            <span class="input-plus" aria-hidden="true">＋</span>
+            <input id="task-input" name="task" type="text" maxlength="160" placeholder="接下来，想完成什么？" autocomplete="off" required>
+            <button class="add-button" type="submit">添加 <span aria-hidden="true">↵</span></button>
+          </form>
+
+          <div class="list-toolbar">
+            <div class="filters" role="group" aria-label="筛选待办事项">
+              <button type="button" data-filter="all" aria-pressed="true">全部 <span id="total-count">0</span></button>
+              <button type="button" data-filter="active" aria-pressed="false">进行中</button>
+              <button type="button" data-filter="completed" aria-pressed="false">已完成</button>
+            </div>
+            <button class="clear-button" id="clear-completed" type="button" disabled>清除已完成</button>
+          </div>
+
+          <ul class="task-list" id="task-list" aria-label="待办事项"></ul>
+          <div class="empty-state" id="empty-state" hidden>
+            <span class="empty-symbol" aria-hidden="true">✳</span>
+            <h3 id="empty-title">留点空白，也很好</h3>
+            <p id="empty-description">添加第一件小事，开启今天的清单。</p>
+          </div>
+
+          <div class="board-footer">
+            <span><span class="storage-dot" aria-hidden="true"></span><span id="storage-label">仅保存在此浏览器</span></span>
+            <span id="remaining-count">0 件待完成</span>
+          </div>
+          <p class="storage-warning" id="storage-warning" role="status" hidden></p>
+          <p class="sr-only" id="live-message" role="status" aria-live="polite" aria-atomic="true"></p>
+          <noscript><p class="storage-warning">请启用 JavaScript，以使用清单的添加、完成和保存功能。</p></noscript>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>小步前进，就会到达。</span>
+        <span>原生 HTML · CSS · JavaScript</span>
+      </footer>
+    </div>
+  </body>
+</html>
